@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+.game-container {
+    margin-top: 50px;
+}
+#antenne {
+    width: 200px;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+#antenne:active {
+    transform: scale(0.95);
+}
