@@ -1,22 +1,29 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import bitcoin from './bitcoin.png';
 import './App.css';
 
 function App() {
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    const savedCounter = localStorage.getItem('counter');
+    if (savedCounter) {
+      setCounter(parseInt(savedCounter));
+    }
+  }, []);
+
+  const handleClick = () => {
+    const newCounter = counter + 1;
+    setCounter(newCounter);
+    localStorage.setItem('counter', newCounter);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Bitcoin Clicker</h1>
+        <p>Bitcoins: {counter}</p>
+        <img src={bitcoin} className="Bitcoin-logo" alt="bitcoin" onClick={handleClick} />
       </header>
     </div>
   );

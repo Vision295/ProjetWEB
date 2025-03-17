@@ -7,6 +7,16 @@
   pointer-events: none;
 }
 
+.Bitcoin-logo {
+  height: 40vmin;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+.Bitcoin-logo:active {
+  transform: scale(0.95);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
