@@ -1,48 +1,89 @@
 .App {
-  text-align: center;
+  text-align: center; /* Center align text within the App component */
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  height: 40vmin; /* Set the height of the logo */
+  pointer-events: none; /* Disable pointer events on the logo */
 }
 
 .Bitcoin-logo {
-  height: 40vmin;
-  cursor: pointer;
-  transition: transform 0.1s ease-in-out;
+  height: 40vmin; /* Set the height of the Bitcoin logo */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: transform 0.1s ease-in-out; /* Smooth transition for transform property */
 }
 
 .Bitcoin-logo:active {
-  transform: scale(0.95);
+  transform: scale(0.95); /* Scale down the logo when active */
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 20s linear; /* Spin animation for the logo */
   }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #282c34; /* Set background color */
+  min-height: 100vh; /* Minimum height of 100% viewport height */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: row; /* Arrange children in a row */
+  align-items: flex-start; /* Align items to the start of the flex container */
+  justify-content: space-between; /* Distribute space between items */
+  font-size: calc(10px + 2vmin); /* Responsive font size */
+  color: white; /* Set text color to white */
+}
+
+.App-shop, .App-leaderboard {
+  width: 20%; /* Set width to 20% */
+  height: 100vh; /* Full height of the webpage */
+  padding: 20px; /* Padding inside the container */
+  background-color: #3a3f47; /* Set background color */
+  border-radius: 10px; /* Rounded corners */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Arrange children in a column */
+  align-items: center; /* Center align items horizontally */
+  justify-content: flex-start; /* Align items to the top */
+  overflow-y: auto; /* Make the section scrollable */
+}
+
+.App-main {
+  flex-grow: 1; /* Allow the main section to grow */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Arrange children in a column */
+  align-items: center; /* Center align items horizontally */
+  justify-content: center; /* Center align items vertically */
 }
 
 .App-link {
-  color: #61dafb;
+  color: #61dafb; /* Set link color */
+}
+
+.shop-item {
+  background-color: #4a4f57; /* Set background color */
+  padding: 5px; /* Reduce padding to fit content */
+  margin: 10px 0; /* Margin between items */
+  border-radius: 5px; /* Rounded corners */
+  text-align: center; /* Center align text */
+  width: 80%; /* Adjust the width to make the boxes smaller */
+  height: auto; /* Allow height to adjust based on content */
+  font-size: 0.8em; /* Reduce font size to fit content */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Arrange children in a column */
+  justify-content: center; /* Center align items vertically */
+}
+
+.shop-item button {
+  margin-top: 5px; /* Margin above the button */
+  padding: 5px 10px; /* Padding inside the button */
+  cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0deg); /* Start rotation at 0 degrees */
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg); /* End rotation at 360 degrees */
   }
 }
