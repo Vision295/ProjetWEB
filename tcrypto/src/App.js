@@ -70,6 +70,7 @@ function App() {
               <p>{item.name}</p>
               <p>Cost: {item.cost} BTC</p>
               <p>Count: {item.count}</p>
+              <p>BPS: {item.bps}</p> {/* Add BPS information */}
               <button onClick={() => handleBuyItem(index)}>Buy</button>
             </div>
           ))}
