@@ -10,6 +10,7 @@ function App() {
     { name: 'GPU Miner', cost: 100, count: 0, bps: 10 },
     { name: 'Mining Farm', cost: 1000, count: 0, bps: 100 },
   ]); // State for shop items
+  const [isOptionsOpen, setIsOptionsOpen] = useState(false); // State for options modal
 
   // Load the counter and items from localStorage when the component mounts
   useEffect(() => {
@@ -60,6 +61,10 @@ function App() {
     }
   };
 
+  const toggleOptions = () => {
+    setIsOptionsOpen(!isOptionsOpen);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -76,6 +81,7 @@ function App() {
           ))}
         </div>
         <div className="App-main">
+          <button className="Options-button" onClick={toggleOptions}>Options</button>
           <h1>TClicker</h1>
           <p>Bitcoins: {counter}</p>
           <p>Bitcoins per second: {bps}</p>
@@ -86,6 +92,21 @@ function App() {
           {/* Leaderboard items will go here */}
         </div>
       </header>
+      {isOptionsOpen && (
+        <div className="Options-modal">
+          <div className="Options-content">
+            <h2>Settings</h2>
+            <p>Adjust your preferences here:</p>
+            <label>
+              <input type="checkbox" /> Enable sound
+            </label>
+            <label>
+              <input type="checkbox" /> Dark mode
+            </label>
+            <button onClick={toggleOptions}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
