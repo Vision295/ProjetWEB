@@ -23,6 +23,10 @@
   }
 }
 
+body {
+  overflow: hidden; /* Prevent scrolling on the base window */
+}
+
 .App-header {
   background-color: #282c34; /* Set background color */
   min-height: 100vh; /* Minimum height of 100% viewport height */
