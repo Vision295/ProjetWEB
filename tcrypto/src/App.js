@@ -27,7 +27,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem('counter', counter);
     localStorage.setItem('items', JSON.stringify(items));
-  }, [counter, items]);
+  }, [counter, items]); //runs this use effect whenever there is a change in one of these variables
 
   // Increment counter based on the number of items every second
   useEffect(() => {
