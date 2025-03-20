@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 const path = require("path");
-require('dotenv').config({ path: path.resolve(__dirname, "../../config.env") }); // Corrected path to config.env
+require('dotenv').config({ path: path.resolve(__dirname, "../config.env") }); // Corrected path to config.env
 
 async function main() {
   const Db = process.env.ATLAS_URI;
