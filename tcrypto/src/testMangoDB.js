@@ -1,53 +1,64 @@
-const { MongoClient } = require("mongodb");
-const path = require("path");
-require('dotenv').config({ path: path.resolve(__dirname, "../config.env") }); // Corrected path to config.env
+const { MongoClient } = require('mongodb');
+require('dotenv').config({ path: '../config.env' });
 
-async function main() {
-  const Db = process.env.ATLAS_URI;
-
-  // Debugging: Log the value of ATLAS_URI
-  console.log('ATLAS_URI:', Db);
-
-  if (!Db) {
-    console.error('Error: ATLAS_URI is not defined in the environment variables.');
-    process.exit(1); // Exit the process with an error code
+class Users {
+  constructor() {
+    this.Db = process.env.ATLAS_URI;
+    this.client = new MongoClient(this.Db, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    this.databaseName = "tcrypto";
+    this.collectionName = "users";
   }
 
-  const client = new MongoClient(Db);
+  async connect() {
+    try {
+      await this.client.connect();
+      console.log("Connected to MongoDB");
+    } catch (e) {
+      console.error("Error connecting to MongoDB:", e);
+    }
+  }
 
-  try {
-    await client.connect();
-    console.log("Connected to MongoDB");
+  async addUser(name, score) {
+    try {
+      const database = this.client.db(this.databaseName);
+      const usersCollection = database.collection(this.collectionName);
+      const newUser = { name, score };
+      const result = await usersCollection.insertOne(newUser);
+      console.log("User added successfully:", result.insertedId);
+    } catch (e) {
+      console.error("Error adding user:", e);
+    }
+  }
 
-    const db = client.db("tcrypto");
-    const usersCollection = db.collection("users");
+  async listUsers() {
+    try {
+      const database = this.client.db(this.databaseName);
+      const usersCollection = database.collection(this.collectionName);
+      const users = await usersCollection.find({}, { projection: { name: 1, score: 1, _id: 0 } }).toArray(); // Project only name and score
+      console.log("Users in the database:", users);
+    } catch (e) {
+      console.error("Error listing users:", e);
+    }
+  }
 
-    // Add users to the collection
-    const addUser = async (name, score) => {
-      console.log("adding a user ...");
-      const result = await usersCollection.inserOne({name:name, score:score});
-      console.log(`${result.insertedCount} user added:`, result.insertedIds);
-    };
-
-    // Read and display all users from the collection
-    const listUsers = async () => {
-      console.log("Listing users...");
-      const users = await usersCollection.find().toArray();
-      console.log("All Users:");
-      users.forEach(user => {
-        console.log(`Name: ${user.name}, Score: ${user.score}`);
-      });
-    };
-
-    // Perform operations
-    await addUser("test", 100);
-    await listUsers();
-  } catch (e) {
-    console.error("Error during database operations:", e);
-  } finally {
-    await client.close();
-    console.log("Connection closed");
+  async close() {
+    try {
+      await this.client.close();
+      console.log("Connection to MongoDB closed");
+    } catch (e) {
+      console.error("Error closing connection:", e);
+    }
   }
 }
 
-main();
+// Example usage
+(async () => {
+  const users = new Users();
+  await users.connect();
+  await users.addUser("Alice", 100); // Add a user
+  await users.listUsers(); // List all users
+  await users.close();
+})();
