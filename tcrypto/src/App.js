@@ -36,7 +36,7 @@ function App() {
   // Options states
   const [isOptionsOpen, setIsOptionsOpen] = useState(false); // State for options modal
   const [isDarkMode, setIsDarkMode] = useState(false); // State for dark mode
-  const [clickAnimation, setClickAnimation] = useState(true); // State for "+X" animation
+  const [clickAnimation, setClickAnimation] = useState(false); // State for "+X" animation
   const [animationPosition, setAnimationPosition] = useState({ top: 0, left: 0 }); // Position for animation
   
   // Load the BTC and items from localStorage when the component mounts
@@ -260,7 +260,7 @@ function App() {
             )}
           </div>
         </div>
-        <div className="App-cryptos">
+        <div className="App-leaderboard">
           <h2>Cryptocurrencies</h2>
           {cryptos.map((crypto, index) => (
             <div key={index} className="crypto-item">
@@ -271,10 +271,6 @@ function App() {
               <button onClick={() => handleSellCrypto(index)}>Sell</button>
             </div>
           ))}
-        </div>
-        <div className="App-leaderboard">
-          <h2>Leaderboard</h2>
-          {/* Leaderboard items will go here */}
         </div>
       </header>
       {isOptionsOpen && (
