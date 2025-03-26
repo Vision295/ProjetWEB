@@ -83,6 +83,10 @@ function App() {
       };
       setCounter(newCounter);
       setItems(newItems);
+
+      // Recalculate and update BPS immediately
+      const totalBps = newItems.reduce((sum, item) => sum + item.count * item.bps, 0);
+      setBps(totalBps);
     }
   };
 
