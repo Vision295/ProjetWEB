@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   const [counter, setCounter] = useState(0); // State for the number of bitcoins
-  const [bps, setBps] = useState(0); // State for bitcoins per second
+  const [bps, setBps] = useState(0); // State for bitcoins per 
   const [items, setItems] = useState([
     { name: 'ASIC Miner', cost: 10, count: 0, bps: 1 },
     { name: 'GPU Miner', cost: 100, count: 0, bps: 10 },
@@ -43,6 +43,7 @@ function App() {
     }, 1000);
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, [items]);
+
 
   // Handle click event on the Bitcoin logo
   const handleClick = (event) => {
@@ -143,7 +144,7 @@ function App() {
         </div>
         <div className="App-leaderboard">
           <h2>Leaderboard</h2>
-          {/* Leaderboard items will go here */}
+          {}
         </div>
       </header>
       {isOptionsOpen && (
