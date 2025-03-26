@@ -12,6 +12,9 @@ function App() {
   ]); // State for shop items
   const [isOptionsOpen, setIsOptionsOpen] = useState(false); // State for options modal
   const [isDarkMode, setIsDarkMode] = useState(false); // State for dark mode
+  const [clickValue, setClickValue] = useState(1); // BTC per click
+  const [clickAnimation, setClickAnimation] = useState(false); // State for "+X" animation
+  const [animationPosition, setAnimationPosition] = useState({ top: 0, left: 0 }); // Position for animation
 
   // Load the counter and items from localStorage when the component mounts
   useEffect(() => {
@@ -43,7 +46,15 @@ function App() {
 
   // Handle click event on the Bitcoin logo
   const handleClick = () => {
-    setCounter(prevCounter => prevCounter + 1);
+    setCounter(prevCounter => prevCounter + clickValue);
+
+    // Generate random position around the logo
+    const randomTop = Math.random() * 40 - 20; // Random value between -20 and 20
+    const randomLeft = Math.random() * 40 - 20; // Random value between -20 and 20
+    setAnimationPosition({ top: randomTop, left: randomLeft });
+
+    setClickAnimation(true); // Trigger animation
+    setTimeout(() => setClickAnimation(false), 300); // Remove animation after 300ms
   };
 
   // Handle buying an item
@@ -93,7 +104,25 @@ function App() {
           <h1>TClicker</h1>
           <p>Bitcoins: {counter}</p>
           <p>Bitcoins per second: {bps}</p>
-          <img src={bitcoin} className="Bitcoin-logo" alt="bitcoin" onClick={handleClick} />
+          <div className="Bitcoin-container">
+            <img
+              src={bitcoin}
+              className="Bitcoin-logo"
+              alt="bitcoin"
+              onClick={handleClick}
+            />
+            {clickAnimation && (
+              <span
+                className="Click-animation"
+                style={{
+                  top: `${animationPosition.top}px`,
+                  left: `${animationPosition.left}px`,
+                }}
+              >
+                +{clickValue}
+              </span>
+            )}
+          </div>
         </div>
         <div className="App-leaderboard">
           <h2>Leaderboard</h2>
