@@ -15,6 +15,7 @@ function App() {
   const [clickValue, setClickValue] = useState(1); // BTC per click
   const [clickAnimation, setClickAnimation] = useState(false); // State for "+X" animation
   const [animationPosition, setAnimationPosition] = useState({ top: 0, left: 0 }); // Position for animation
+  const [userData, setUserData] = useState([]); // State to store fetched user data
 
   // Load the counter and items from localStorage when the component mounts
   useEffect(() => {
@@ -100,6 +101,21 @@ function App() {
     document.body.classList.toggle('dark-mode', !isDarkMode); // Toggle dark mode class on body
   };
 
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/users');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log("Fetched user data:", data); // Log fetched data in the browser console
+      setUserData(data);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      alert('Failed to fetch user data. Check the console for details.');
+    }
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -144,7 +160,27 @@ function App() {
         </div>
         <div className="App-leaderboard">
           <h2>Leaderboard</h2>
-          {}
+          <button onClick={fetchUserData}>Fetch Leaderboard</button>
+          {userData.length > 0 ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userData.map((user, index) => (
+                  <tr key={index}>
+                    <td>{user.name}</td>
+                    <td>{user.score}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No data available. Click "Fetch Leaderboard" to load data.</p>
+          )}
         </div>
       </header>
       {isOptionsOpen && (

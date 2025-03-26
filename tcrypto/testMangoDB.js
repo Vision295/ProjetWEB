@@ -1,9 +1,12 @@
 const { MongoClient } = require('mongodb');
-require('dotenv').config({ path: '../config.env' });
+require('dotenv').config({ path: './config.env' });
 
 class Users {
   constructor() {
     this.Db = process.env.ATLAS_URI;
+    if (!this.Db) {
+      throw new Error("ATLAS_URI is not defined in the environment variables.");
+    }
     this.client = new MongoClient(this.Db, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -53,6 +56,8 @@ class Users {
     }
   }
 }
+
+module.exports = Users; // Export the Users class
 
 // Example usage
 (async () => {
