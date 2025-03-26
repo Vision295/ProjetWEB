@@ -11,6 +11,7 @@ function App() {
     { name: 'Mining Farm', cost: 1000, count: 0, bps: 100 },
   ]); // State for shop items
   const [isOptionsOpen, setIsOptionsOpen] = useState(false); // State for options modal
+  const [isDarkMode, setIsDarkMode] = useState(false); // State for dark mode
 
   // Load the counter and items from localStorage when the component mounts
   useEffect(() => {
@@ -65,6 +66,11 @@ function App() {
     setIsOptionsOpen(!isOptionsOpen);
   };
 
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    document.body.classList.toggle('dark-mode', !isDarkMode); // Toggle dark mode class on body
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -81,7 +87,9 @@ function App() {
           ))}
         </div>
         <div className="App-main">
-          <button className="Options-button" onClick={toggleOptions}>Options</button>
+          <button className="DarkMode-button" onClick={toggleDarkMode}>
+            {isDarkMode ? 'Day Mode' : 'Night Mode'}
+          </button>
           <h1>TClicker</h1>
           <p>Bitcoins: {counter}</p>
           <p>Bitcoins per second: {bps}</p>
