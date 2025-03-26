@@ -15,7 +15,8 @@ function App() {
   const [clickValue, setClickValue] = useState(1); // BTC per click
   const [clickAnimation, setClickAnimation] = useState(false); // State for "+X" animation
   const [animationPosition, setAnimationPosition] = useState({ top: 0, left: 0 }); // Position for animation
-
+  const [showShop, setShowShop] = useState(false); // State for shop visibility
+  const [showLeaderboard, setShowLeaderboard] = useState(false); // State for leaderboard visibility
   // Load the counter and items from localStorage when the component mounts
   useEffect(() => {
     const savedCounter = localStorage.getItem('counter');
@@ -103,22 +104,46 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="App-shop">
-          <h2>Shop</h2>
-          {items.map((item, index) => (
-            <div key={index} className="shop-item">
-              <p>{item.name}</p>
-              <p>Cost: {item.cost} BTC</p>
-              <p>Count: {item.count}</p>
-              <p>BPS: {item.bps}</p> {/* Add BPS information */}
-              <button onClick={() => handleBuyItem(index)}>Buy</button>
-            </div>
-          ))}
-        </div>
-        <div className="App-main">
-          <button className="DarkMode-button" onClick={toggleDarkMode}>
-            {isDarkMode ? 'Day Mode' : 'Night Mode'}
+
+        <div className="Buttons-container">
+          <button className="ShowShop-button" onClick={() => setShowShop(!showShop)}>
+            {showShop ? 'Hide Shop' : 'Show Shop'}
           </button>
+          <button className="ShowLeaderboard-button" onClick={() => setShowLeaderboard(!showLeaderboard)}>
+            {showLeaderboard ? 'Hide Leaderboard' : 'Show Leaderboard'}
+          </button>
+
+            <button className="DarkMode-button" onClick={toggleDarkMode}>
+              {isDarkMode ? 'Day Mode' : 'Night Mode'}
+            </button>
+
+        </div>
+
+        {showShop && (
+        <div className="App-shop">
+        <h2>Shop</h2>
+        {items.map((item, index) => (
+          <div key={index} className="shop-item">
+            <p>{item.name}</p>
+            <p>Cost: {item.cost} BTC</p>
+            <p>Count: {item.count}</p>
+            <p>BPS: {item.bps}</p> {/* Add BPS information */}
+            <button onClick={() => handleBuyItem(index)}>Buy</button>
+          </div>
+        ))}
+        </div>
+        )}
+
+        {showLeaderboard && (
+          <div className="App-leaderboard">
+            <h2>Leaderboard</h2>
+            {}
+          </div>
+        )}        
+
+        <div className="App-main">
+
+
           <h1>TCrypto</h1> {/* Updated title */}
           <p>Bitcoins: {counter}</p>
           <p>Bitcoins per second: {bps}</p>
@@ -143,10 +168,7 @@ function App() {
             )}
           </div>
         </div>
-        <div className="App-leaderboard">
-          <h2>Leaderboard</h2>
-          {}
-        </div>
+
       </header>
       {isOptionsOpen && (
         <div className="Options-modal">

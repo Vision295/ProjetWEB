@@ -75,27 +75,55 @@ body.dark-mode .Options-content {
   color: #000000; /* Ensure text in header is dark in day mode */
 }
 
-.App-shop, .App-leaderboard {
-  width: 20%; /* Set width to 20% */
-  height: 100vh; /* Full height of the webpage */
-  padding: 20px; /* Padding inside the container */
-  background-color: #e6e6e6; /* Light gray background for shop and leaderboard */
-  border-radius: 10px; /* Rounded corners */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Arrange children in a column */
-  align-items: center; /* Center align items horizontally */
-  justify-content: flex-start; /* Align items to the top */
+
+
+.App-shop {
+  position: fixed; /* Fix the shop section */
+  top: 60px; /* Below the buttons */
+  left: 10px; /* Align to the left */
+  width: 20%; /* Set width */
+  height: calc(100vh - 70px); /* Full height minus button space */
+  padding: 20px;
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  border: 1px solid #ccc;
   overflow-y: auto; /* Make the section scrollable */
-  color: #000000; /* Ensure text is dark in day mode */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.App-leaderboard {
+  position: fixed; /* Fix the leaderboard section */
+  top: 60px; /* Below the buttons */
+  right: 10px; /* Align to the right */
+  width: 20%; /* Set width */
+  height: calc(100vh - 70px); /* Full height minus button space */
+  padding: 20px;
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  overflow-y: auto; /* Make the section scrollable */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .App-main {
-  flex-grow: 1; /* Allow the main section to grow */
+  /*flex-grow: 1; /* Allow the main section to grow */
   display: flex; /* Use flexbox for layout */
+  position: fixed; 
   flex-direction: column; /* Arrange children in a column */
+  top: 60px;
+  left: 50%; 
+  transform: translateX(-50%);
+  width: 50%;
+  height: calc(100vh - 70px);
   align-items: center; /* Center align items horizontally */
   justify-content: center; /* Center align items vertically */
-  position: relative; /* Set relative positioning for child elements */
+  /*position: relative; /* Set relative positioning for child elements */
 }
 
 .App-link {
@@ -144,16 +172,30 @@ body.dark-mode .Options-content {
   cursor: pointer;
 }
 
-.DarkMode-button {
-  position: absolute;
+.Buttons-container {
+  position: fixed;
   top: 10px;
-  left: 10px;
-  padding: 10px 20px;
-  background-color: #d9d9d9; /* Light gray button background */
-  color: #000000; /* Dark text for button */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Space between buttons */
+  z-index: 100;
+  width: 300px; /* Adjust width to keep buttons centered */
+}
+
+.DarkMode-button {
+  
+  order: 2; /* Keeps it in the center */
+}
+
+.ShowShop-button {
+  order: 1; /* Moves it to the left */
+}
+
+.ShowLeaderboard-button {
+  order: 3; /* Moves it to the right */
 }
 
 .Options-modal {
