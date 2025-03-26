@@ -25,30 +25,68 @@
 
 body {
   overflow: hidden; /* Prevent scrolling on the base window */
+  background-color: #f9f9f9; /* Brighter background for day mode */
+  color: #000000; /* Dark text for better contrast in day mode */
+}
+
+body.dark-mode {
+  background-color: #121212; /* Dark background */
+  color: #ffffff; /* Light text for night mode */
+}
+
+body.dark-mode .App-header {
+  background-color: #1e1e1e; /* Darker header background */
+  color: #ffffff; /* Light text for header in night mode */
+}
+
+body.dark-mode .App-shop, 
+body.dark-mode .App-leaderboard {
+  background-color: #2a2a2a; /* Darker shop and leaderboard background */
+  color: #ffffff; /* Light text for shop and leaderboard in night mode */
+}
+
+body.dark-mode .shop-item {
+  background-color: #3a3a3a; /* Darker shop item background */
+  color: #ffffff; /* Light text for shop items in night mode */
+}
+
+body.dark-mode .DarkMode-button {
+  background-color: #444444; /* Darker button background */
+  color: #ffffff; /* Light text for button in night mode */
+}
+
+body.dark-mode .Options-modal {
+  background-color: rgba(0, 0, 0, 0.8); /* Darker modal background */
+}
+
+body.dark-mode .Options-content {
+  background-color: #1e1e1e; /* Darker modal content background */
+  color: #ffffff; /* Light text for modal content */
 }
 
 .App-header {
-  background-color: #282c34; /* Set background color */
+  background-color: #ffffff; /* Bright header background */
   min-height: 100vh; /* Minimum height of 100% viewport height */
   display: flex; /* Use flexbox for layout */
   flex-direction: row; /* Arrange children in a row */
   align-items: flex-start; /* Align items to the start of the flex container */
   justify-content: space-between; /* Distribute space between items */
   font-size: calc(10px + 2vmin); /* Responsive font size */
-  color: white; /* Set text color to white */
+  color: #000000; /* Ensure text in header is dark in day mode */
 }
 
 .App-shop, .App-leaderboard {
   width: 20%; /* Set width to 20% */
   height: 100vh; /* Full height of the webpage */
   padding: 20px; /* Padding inside the container */
-  background-color: #3a3f47; /* Set background color */
+  background-color: #e6e6e6; /* Light gray background for shop and leaderboard */
   border-radius: 10px; /* Rounded corners */
   display: flex; /* Use flexbox for layout */
   flex-direction: column; /* Arrange children in a column */
   align-items: center; /* Center align items horizontally */
   justify-content: flex-start; /* Align items to the top */
   overflow-y: auto; /* Make the section scrollable */
+  color: #000000; /* Ensure text is dark in day mode */
 }
 
 .App-main {
@@ -65,7 +103,7 @@ body {
 }
 
 .shop-item {
-  background-color: #4a4f57; /* Set background color */
+  background-color: #f0f0f0; /* Light gray background for shop items */
   padding: 5px; /* Reduce padding to fit content */
   margin: 10px 0; /* Margin between items */
   border-radius: 5px; /* Rounded corners */
@@ -76,6 +114,7 @@ body {
   display: flex; /* Use flexbox for layout */
   flex-direction: column; /* Arrange children in a column */
   justify-content: center; /* Center align items vertically */
+  color: #000000; /* Ensure text is dark in day mode */
 }
 
 .shop-item button {
@@ -100,6 +139,18 @@ body {
   padding: 10px 20px;
   background-color: #4a4f57;
   color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.DarkMode-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 10px 20px;
+  background-color: #d9d9d9; /* Light gray button background */
+  color: #000000; /* Dark text for button */
   border: none;
   border-radius: 5px;
   cursor: pointer;
