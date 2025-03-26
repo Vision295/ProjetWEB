@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import bitcoin from './bitcoin.png';
+import bitcoin from './tcrypto.png';
 import './App.css';
 
 function App() {
