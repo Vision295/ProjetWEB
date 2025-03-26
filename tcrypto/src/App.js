@@ -45,13 +45,26 @@ function App() {
   }, [items]);
 
   // Handle click event on the Bitcoin logo
-  const handleClick = () => {
+  const handleClick = (event) => {
     setCounter(prevCounter => prevCounter + clickValue);
 
-    // Generate random position around the logo
-    const randomTop = Math.random() * 40 - 20; // Random value between -20 and 20
-    const randomLeft = Math.random() * 40 - 20; // Random value between -20 and 20
-    setAnimationPosition({ top: randomTop, left: randomLeft });
+    // Get the bounding rectangle of the logo
+    const rect = event.target.getBoundingClientRect();
+    const logoCenterX = rect.left + rect.width / 2; // X-coordinate of the center
+    const logoCenterY = rect.top + rect.height / 2; // Y-coordinate of the center
+
+    // Generate random position around the center of the logo
+    const minRadius = rect.width / 2 + 10; // Minimum radius (just outside the logo)
+    const maxRadius = 100; // Maximum radius
+    const randomRadius = Math.random() * (maxRadius - minRadius) + minRadius; // Random radius between min and max
+    const randomAngle = Math.random() * 2 * Math.PI; // Random angle in radians
+    const randomTop = Math.sin(randomAngle) * randomRadius; // Y-offset
+    const randomLeft = Math.cos(randomAngle) * randomRadius; // X-offset
+
+    setAnimationPosition({
+      top: logoCenterY + randomTop - rect.top, // Adjust relative to the logo's top
+      left: logoCenterX + randomLeft - rect.left, // Adjust relative to the logo's left
+    });
 
     setClickAnimation(true); // Trigger animation
     setTimeout(() => setClickAnimation(false), 300); // Remove animation after 300ms
@@ -101,7 +114,7 @@ function App() {
           <button className="DarkMode-button" onClick={toggleDarkMode}>
             {isDarkMode ? 'Day Mode' : 'Night Mode'}
           </button>
-          <h1>TClicker</h1>
+          <h1>TCrypto</h1> {/* Updated title */}
           <p>Bitcoins: {counter}</p>
           <p>Bitcoins per second: {bps}</p>
           <div className="Bitcoin-container">
