@@ -176,3 +176,27 @@ body.dark-mode .Options-content {
   text-align: center;
   width: 300px;
 }
+
+.Bitcoin-container {
+  position: relative; /* Position container for relative positioning of animation */
+}
+
+.Click-animation {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: orange; /* Change color to orange */
+  animation: fadeUp 0.3s ease-out; /* Quicker animation */
+  pointer-events: none; /* Prevent interaction with the animation */
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
