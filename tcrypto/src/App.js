@@ -134,6 +134,7 @@ function App() {
                 style={{
                   top: `${animationPosition.top}px`,
                   left: `${animationPosition.left}px`,
+                  color: isDarkMode ? 'white' : 'black', // Set color based on dark mode
                 }}
               >
                 +{clickValue}
