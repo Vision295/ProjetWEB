@@ -1,58 +1,53 @@
-const mongoose = require('mongoose');
-const readline = require('readline');
+const { MongoClient } = require("mongodb");
+const path = require("path");
+require('dotenv').config({ path: path.resolve(__dirname, "../config.env") }); // Corrected path to config.env
 
-// rempalcer "mdp" par le vraie mot de passe
-const dbURI = 'mongodb+srv://mdp:tcrypto@tcrypto.csatz.mongodb.net/?retryWrites=true&w=majority&appName=tcrypto'; // Replace with the connection string you copied from Atlas
+async function main() {
+  const Db = process.env.ATLAS_URI;
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected successfully'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+  // Debugging: Log the value of ATLAS_URI
+  console.log('ATLAS_URI:', Db);
 
-// Define a simple user schema
-const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  score: { type: Number, required: true, unique: false }, // Changed BigInt to Number for compatibility
-});
-
-// Create the User model based on the schema
-const User = mongoose.model('User', userSchema);
-
-// Create a readline interface for user input
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-// Function to add a new user to MongoDB
-const addUser = async (name, score) => {
-  try {
-    // Create a new user instance
-    const newUser = new User({
-      name,
-      score,
-    });
-
-    // Save the user to the database
-    const savedUser = await newUser.save();
-
-    console.log('User added successfully:', savedUser);
-  } catch (error) {
-    console.error('Error adding user:', error);
-  } finally {
-    rl.close(); // Close the readline interface
-    mongoose.connection.close(); // Close the database connection
+  if (!Db) {
+    console.error('Error: ATLAS_URI is not defined in the environment variables.');
+    process.exit(1); // Exit the process with an error code
   }
-};
 
-// Prompt the user for inputs
-rl.question('Enter username: ', (name) => {
-  rl.question('Enter score: ', (score) => {
-    if (!isNaN(score)) {
-      addUser(name, parseInt(score)); // Convert score to a number before saving
-    } else {
-      console.error('Invalid score. Please enter a numeric value.');
-      rl.close();
-      mongoose.connection.close();
-    }
-  });
-});
+  const client = new MongoClient(Db);
+
+  try {
+    await client.connect();
+    console.log("Connected to MongoDB");
+
+    const db = client.db("tcrypto");
+    const usersCollection = db.collection("users");
+
+    // Add users to the collection
+    const addUser = async (name, score) => {
+      console.log("adding a user ...");
+      const result = await usersCollection.inserOne({name:name, score:score});
+      console.log(`${result.insertedCount} user added:`, result.insertedIds);
+    };
+
+    // Read and display all users from the collection
+    const listUsers = async () => {
+      console.log("Listing users...");
+      const users = await usersCollection.find().toArray();
+      console.log("All Users:");
+      users.forEach(user => {
+        console.log(`Name: ${user.name}, Score: ${user.score}`);
+      });
+    };
+
+    // Perform operations
+    await addUser("test", 100);
+    await listUsers();
+  } catch (e) {
+    console.error("Error during database operations:", e);
+  } finally {
+    await client.close();
+    console.log("Connection closed");
+  }
+}
+
+main();
