@@ -182,12 +182,14 @@ body.dark-mode .Options-content {
 }
 
 .Click-animation {
-  position: absolute;
+  position: fixed; /* Use fixed positioning to align with viewport */
   font-size: 1.5rem;
   font-weight: bold;
-  color: orange; /* Change color to orange */
-  animation: fadeUp 0.3s ease-out; /* Quicker animation */
+  color: orange; /* Orange color matching the logo */
+  animation: fadeUp 0.3s ease-out; /* Smooth animation */
   pointer-events: none; /* Prevent interaction with the animation */
+  transform: translate(-50%, -50%); /* Center animation at the calculated position */
+  z-index: 10; /* Ensure it appears above other elements */
 }
 
 @keyframes fadeUp {

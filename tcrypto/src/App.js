@@ -81,12 +81,22 @@ function App() {
   }, []);
 
   // Handle click event on the Bitcoin logo
-  const handleClick = () => {
+  const handleClick = (event) => {
     setBTC(prevBTC => prevBTC + clickValue);
 
-    // Generate random position around the logo
-    const randomTop = Math.random() * 40 - 20; // Random value between -20 and 20
-    const randomLeft = Math.random() * 40 - 20; // Random value between -20 and 20
+    // Get the bounding rectangle of the image
+    const rect = event.target.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2; // X-coordinate of the center
+    const centerY = rect.top + rect.height / 2; // Y-coordinate of the center
+
+    // Generate random position around the logo, avoiding the logo itself
+    const minRadius = rect.width / 2 + 20; // Minimum radius to avoid the logo
+    const maxRadius = 150; // Maximum radius for animation spawn
+    let randomAngle = Math.random() * 2 * Math.PI; // Random angle in radians
+    let randomRadius = Math.random() * (maxRadius - minRadius) + minRadius; // Random radius between min and max
+    const randomTop = centerY + Math.sin(randomAngle) * randomRadius; // Y-coordinate
+    const randomLeft = centerX + Math.cos(randomAngle) * randomRadius; // X-coordinate
+
     setAnimationPosition({ top: randomTop, left: randomLeft });
 
     setClickAnimation(true); // Trigger animation
@@ -245,7 +255,7 @@ function App() {
               src={bitcoin}
               className="Bitcoin-logo"
               alt="bitcoin"
-              onClick={handleMineBtc}
+              onClick={handleClick} // Ensure the correct function is used here
             />
             {clickAnimation && (
               <span
