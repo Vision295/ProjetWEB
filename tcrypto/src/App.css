@@ -173,6 +173,7 @@ body.dark-mode .Options-content {
 }
 
 .Buttons-container {
+  border-radius: 10px;
   position: fixed;
   top: 10px;
   left: 50%;
@@ -186,7 +187,16 @@ body.dark-mode .Options-content {
 }
 
 .DarkMode-button {
-  
+  background-image: url('assets/dark-mode.png');
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position:center;
+  width:40px;
+
+  clip-path: inset(0 round 5px); /* Forces rounded edges */
+  height:40px;
+  border:none;
+  cursor: pointer;
   order: 2; /* Keeps it in the center */
 }
 

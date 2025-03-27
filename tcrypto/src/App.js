@@ -114,7 +114,7 @@ function App() {
           </button>
 
             <button className="DarkMode-button" onClick={toggleDarkMode}>
-              {isDarkMode ? 'Day Mode' : 'Night Mode'}
+              {/* {isDarkMode ? 'Day Mode' : 'Night Mode'} */}
             </button>
 
         </div>
