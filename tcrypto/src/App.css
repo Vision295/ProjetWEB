@@ -134,6 +134,32 @@ body.dark-mode .market-item {
   position: relative; /* Set relative positioning for child elements */
 }
 
+.App-sidebar,
+.App-main,
+.App-market {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.Resizer {
+  width: 5px;
+  background-color: #ccc;
+  cursor: ew-resize;
+  position: relative;
+  z-index: 1;
+}
+
+.Resizer:hover {
+  background-color: #aaa;
+}
+
+body.resizing {
+  user-select: none; /* Disable text selection */
+  cursor: ew-resize; /* Change cursor to resizing cursor */
+}
+
 .balances {
   margin-bottom: 20px;
   text-align: left;

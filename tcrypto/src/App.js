@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import bitcoin from './bitcoin.png';
 import ethereum from './ethereum.png';
 import binance from './binance.png';
@@ -155,10 +155,55 @@ function App() {
     document.body.className = isNightMode ? 'dark-mode' : ''; // Apply class to body
   }, [isNightMode]);
 
+  const [sidebarWidth, setSidebarWidth] = useState(25); // Sidebar width in percentage
+  const [marketWidth, setMarketWidth] = useState(25); // Market width in percentage
+  const isResizing = useRef(false);
+  const resizeDirection = useRef(null);
+
+  const handleMouseDown = (direction) => {
+    isResizing.current = true;
+    resizeDirection.current = direction;
+    document.body.classList.add('resizing'); // Add resizing class to body
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isResizing.current) return;
+
+    if (resizeDirection.current === 'sidebar') {
+      const newWidth = (e.clientX / window.innerWidth) * 100;
+      if (newWidth > 10 && newWidth < 40) {
+        setSidebarWidth(newWidth);
+      }
+    } else if (resizeDirection.current === 'market') {
+      const newWidth = ((window.innerWidth - e.clientX) / window.innerWidth) * 100;
+      if (newWidth > 10 && newWidth < 40) {
+        setMarketWidth(newWidth);
+      }
+    }
+  };
+
+  const handleMouseUp = () => {
+    isResizing.current = false;
+    resizeDirection.current = null;
+    document.body.classList.remove('resizing'); // Remove resizing class from body
+  };
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <div className="App-sidebar">
+        <div
+          className="App-sidebar"
+          style={{ width: `${sidebarWidth}%` }}
+        >
           <h2>Shop</h2>
           {['Tcrypto', 'BinanceCoin', 'Ethereum', 'Bitcoin'].map(crypto => (
             !availableCryptos.includes(crypto) ? (
@@ -182,7 +227,14 @@ function App() {
             )
           ))}
         </div>
-        <div className="App-main">
+        <div
+          className="Resizer"
+          onMouseDown={() => handleMouseDown('sidebar')}
+        />
+        <div
+          className="App-main"
+          style={{ width: `${100 - sidebarWidth - marketWidth}%` }}
+        >
           <button className="DarkMode-button" onClick={toggleNightMode}>
             {isNightMode ? 'Switch to Day Mode' : 'Switch to Night Mode'}
           </button>
@@ -240,7 +292,14 @@ function App() {
             )}
           </div>
         </div>
-        <div className="App-market">
+        <div
+          className="Resizer"
+          onMouseDown={() => handleMouseDown('market')}
+        />
+        <div
+          className="App-market"
+          style={{ width: `${marketWidth}%` }}
+        >
           <h2>Crypto Market</h2>
           {['BTC', 'ETH', 'BNB', 'TCR'].map(crypto => (
             availableCryptos.includes(crypto) && (
