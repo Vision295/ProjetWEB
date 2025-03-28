@@ -157,76 +157,6 @@ function App() {
 
   return (
     <div className="App">
-    
-      <header className="App-header">
-        <div className="App-sidebar">
-          <h2>Shop</h2>
-          {['Tcrypto', 'BinanceCoin', 'Ethereum', 'Bitcoin'].map(crypto => (
-            !availableCryptos.includes(crypto) ? (
-              <div key={crypto} className="shop-item">
-                <p>{crypto}</p>
-                <button onClick={() => handleBuyCrypto(crypto)}>Unlock {crypto} ($1000)</button>
-              </div>
-            ) : (
-              <div key={crypto}>
-                <h3>{crypto} Shop</h3>
-                {shopItems[crypto].map((item, index) => (
-                  <div key={index} className="shop-item">
-                    <p>{item.name}</p>
-                    <p>Cost: ${item.cost.toFixed(2)}</p>
-                    <p>Count: {item.count}</p>
-                    <p>BPS: {item.bps}</p>
-                    <button onClick={() => handleBuyItem(crypto, index)}>Buy</button>
-                  </div>
-                ))}
-              </div>
-            )
-          ))}
-        </div>
-
-        <div class="vertical-line">
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>  
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>  
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-        <p>+</p>
-
-        </div>    
-
-        <div className="App-leaderboard">
-          <h2>Cryptocurrencies</h2>
-          {cryptos.map((crypto, index) => (
-            <div key={index} className="crypto-item">
-              <p>{crypto.name}</p>
-              <p>Price: ${crypto.price.toFixed(2)}</p>
-              <p>Quantity: {crypto.quantity}</p>
-              <button className = "crypto-item-button" onClick={() => handleBuyCrypto(index)}>Buy</button>
-              <button className = "crypto-item-button" onClick={() => handleSellCrypto(index)}>Sell</button>
-            </div>
-          ))}
-        </div>
-      
-
         <div className="App-main">
           <button className="DarkMode-button" onClick={toggleNightMode}>
             {isNightMode ? 'Switch to Day Mode' : 'Switch to Night Mode'}
@@ -285,6 +215,66 @@ function App() {
             )}
           </div>
         </div>
+    
+      <header className="App-header">
+        <div className="App-sidebar">
+          <h2>Shop</h2>
+          {['Tcrypto', 'BinanceCoin', 'Ethereum', 'Bitcoin'].map(crypto => (
+            !availableCryptos.includes(crypto) ? (
+              <div key={crypto} className="shop-item">
+                <p>{crypto}</p>
+                <button onClick={() => handleBuyCrypto(crypto)}>Unlock {crypto} ($1000)</button>
+              </div>
+            ) : (
+              <div key={crypto}>
+                <h3>{crypto} Shop</h3>
+                {shopItems[crypto].map((item, index) => (
+                  <div key={index} className="shop-item">
+                    <p>{item.name}</p>
+                    <p>Cost: ${item.cost.toFixed(2)}</p>
+                    <p>Count: {item.count}</p>
+                    <p>BPS: {item.bps}</p>
+                    <button onClick={() => handleBuyItem(crypto, index)}>Buy</button>
+                  </div>
+                ))}
+              </div>
+            )
+          ))}
+        </div>
+
+        <div class="vertical-line">
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>  
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>  
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+
+        </div>    
+
+
+      
+
+
         <div className="App-market">
           <h2>Crypto Market</h2>
           {['BTC', 'ETH', 'BNB', 'TCR'].map(crypto => (

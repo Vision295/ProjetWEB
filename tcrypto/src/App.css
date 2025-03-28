@@ -58,7 +58,7 @@ body.dark-mode .DarkMode-button {
 }
 
 body.dark-mode .Options-modal {
-  background-color: rgba(0, 0, 0, 0); /* Darker modal background */
+  background-color: rgba(0, 0, 0, 0, 0, 0); /* Darker modal background */
 }
 
 body.dark-mode .Options-content {
@@ -68,13 +68,13 @@ body.dark-mode .Options-content {
 
 body.dark-mode .App-sidebar,
 body.dark-mode .App-market {
-  background-color: #333333; /* Softer dark sidebar and market background */
+  background-color: #000000; /* Softer dark sidebar and market background */
   color: #ffffff; /* Light text */
 }
 
 body.dark-mode .shop-item,
 body.dark-mode .market-item {
-  background-color: #3d3d3d; /* Softer dark item background */
+  background-color: #000000; /* Softer dark item background */
   color: #ffffff; /* Light text */
 }
 
@@ -108,20 +108,22 @@ body.dark-mode .market-item {
  /* Ensure text is dark in day mode */
 }
 
-.App-leaderboard {
+.App-market {
   position: absolute; /* Position button relative to its container */
   top: 10px; /* 10px from the top */
   right: 250px; /* 10px from the right */
 }
 
-.App-shop{
+.App-sidebar{
   position: absolute;
   top:10px;
   right:600px;
 }
 
 .App-main {
+  font-family: 'Pixelify Sans';
   font-size: 14px;
+  color: #069506; 
    /* 100% of the viewport height */
   line-height: 0.5; 
   /* flex-grow: 1; Allow the main section to grow */
@@ -269,4 +271,11 @@ body.dark-mode .DarkMode-button {
   font-family: 'Pixelify Sans';
   /* 100% of the viewport height */
   line-height: 0.5; 
+}
+
+
+ .Crypto-logo{
+  width: 200px;
+  height: 200px;
+  object-fit: contain; /* Ensures the entire image fits inside the box */
 }
