@@ -145,6 +145,16 @@ function App() {
     }
   };
 
+  const [isNightMode, setIsNightMode] = useState(false); // State for night mode
+
+  const toggleNightMode = () => {
+    setIsNightMode(prev => !prev);
+  };
+
+  useEffect(() => {
+    document.body.className = isNightMode ? 'dark-mode' : ''; // Apply class to body
+  }, [isNightMode]);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -173,6 +183,9 @@ function App() {
           ))}
         </div>
         <div className="App-main">
+          <button className="DarkMode-button" onClick={toggleNightMode}>
+            {isNightMode ? 'Switch to Day Mode' : 'Switch to Night Mode'}
+          </button>
           <h1>Crypto Market Simulator</h1>
           <div className="balances">
             <p>USD Balance: ${USD.toFixed(2)}</p>

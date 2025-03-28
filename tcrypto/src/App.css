@@ -50,12 +50,12 @@ body {
 }
 
 body.dark-mode {
-  background-color: #121212; /* Dark background */
-  color: #ffffff; /* Light text for night mode */
+  background-color: #1c1c1c; /* Slightly lighter dark background */
+  color: #e0e0e0; /* Softer light text */
 }
 
 body.dark-mode .App-header {
-  background-color: #1e1e1e; /* Darker header background */
+  background-color: #2a2a2a; /* Softer dark header background */
   color: #ffffff; /* Light text for header in night mode */
 }
 
@@ -66,12 +66,12 @@ body.dark-mode .App-leaderboard {
 }
 
 body.dark-mode .shop-item {
-  background-color: #3a3a3a; /* Darker shop item background */
+  background-color: #3d3d3d; /* Softer dark item background */
   color: #ffffff; /* Light text for shop items in night mode */
 }
 
 body.dark-mode .DarkMode-button {
-  background-color: #444444; /* Darker button background */
+  background-color: #444444; /* Softer dark button background */
   color: #ffffff; /* Light text for button in night mode */
 }
 
@@ -82,6 +82,18 @@ body.dark-mode .Options-modal {
 body.dark-mode .Options-content {
   background-color: #1e1e1e; /* Darker modal content background */
   color: #ffffff; /* Light text for modal content */
+}
+
+body.dark-mode .App-sidebar,
+body.dark-mode .App-market {
+  background-color: #333333; /* Softer dark sidebar and market background */
+  color: #ffffff; /* Light text */
+}
+
+body.dark-mode .shop-item,
+body.dark-mode .market-item {
+  background-color: #3d3d3d; /* Softer dark item background */
+  color: #ffffff; /* Light text */
 }
 
 .App-header {
@@ -117,8 +129,8 @@ body.dark-mode .Options-content {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: center; /* Center align items horizontally */
+  justify-content: flex-start; /* Align items to the top */
   position: relative; /* Set relative positioning for child elements */
 }
 
@@ -169,15 +181,21 @@ body.dark-mode .Options-content {
 }
 
 .DarkMode-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  position: absolute; /* Position the button absolutely within the App-main section */
+  top: 10px; /* Distance from the top */
+  right: 10px; /* Distance from the right */
   padding: 10px 20px;
-  background-color: #d9d9d9; /* Light gray button background */
+  background-color: #f0f0f0; /* Light gray button background */
   color: #000000; /* Dark text for button */
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .DarkMode-button {
+  background-color: #444444; /* Softer dark button background */
+  color: #ffffff; /* Light text for button in night mode */
 }
 
 .Options-modal {
