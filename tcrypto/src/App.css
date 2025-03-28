@@ -23,7 +23,6 @@
 }
 
 
-
 body {
 
   /* font-family: 'Courier'; */
@@ -65,6 +64,18 @@ body.dark-mode .Options-modal {
 body.dark-mode .Options-content {
   background-color: #ffffff; /* Darker modal content background */
   color: #000000; /* Light text for modal content */
+}
+
+body.dark-mode .App-sidebar,
+body.dark-mode .App-market {
+  background-color: #333333; /* Softer dark sidebar and market background */
+  color: #ffffff; /* Light text */
+}
+
+body.dark-mode .shop-item,
+body.dark-mode .market-item {
+  background-color: #3d3d3d; /* Softer dark item background */
+  color: #ffffff; /* Light text */
 }
 
 .App-header {
@@ -183,6 +194,12 @@ body.dark-mode .Options-content {
   /* border: none; */
   /* border-radius: 5px; */
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .DarkMode-button {
+  background-color: #444444; /* Softer dark button background */
+  color: #ffffff; /* Light text for button in night mode */
 }
 
 /* .Options-modal { */
