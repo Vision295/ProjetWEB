@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import bitcoin from './bitcoin.png';
-import ethereum from './ethereum.png';
-import binance from './binance.png';
-import tcrypto from './tcrypto.png';
+import bitcoin from './bitcoin1.png';
+import ethereum from './ethereum1.png';
+import binance from './binance1.png';
+import tcrypto from './tcrypto1.png';
 import './App.css';
 
 function App() {
