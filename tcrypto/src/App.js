@@ -219,18 +219,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="App-shop">
-          <h2>Shop</h2>
-          {items.map((item, index) => (
-            <div key={index} className="shop-item">
-              <p>{item.name}</p>
-              <p>Cost: ${item.cost.toFixed(2)} USD</p> {/* Display cost in USD */}
-              <p>Count: {item.count}</p>
-              <p>BPS: {item.bps}</p> {/* Add BPS information */}
-              <button onClick={() => handleBuyItem(index)}>Buy</button>
-            </div>
-          ))}
-        </div>
         <div className="App-main">
           <button className="DarkMode-button" onClick={toggleDarkMode}>
             {isDarkMode ? 'Day Mode' : 'Night Mode'}
@@ -246,6 +234,19 @@ function App() {
             </button>
           </div>
         </div>
+        <div className="App-shop">
+          <h2>Shop</h2>
+          {items.map((item, index) => (
+            <div key={index} className="shop-item">
+              <p>{item.name}</p>
+              <p>Cost: ${item.cost.toFixed(2)} USD</p> {/* Display cost in USD */}
+              <p>Count: {item.count}</p>
+              <p>BPS: {item.bps}</p> {/* Add BPS information */}
+              <button onClick={() => handleBuyItem(index)}>Buy</button>
+            </div>
+          ))}
+        </div>
+
         <div className="App-leaderboard">
           <h2>Cryptocurrencies</h2>
           {cryptos.map((crypto, index) => (

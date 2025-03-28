@@ -26,6 +26,7 @@
 
 
 body {
+
   font-family: 'Courier';
   /* overflow: hidden;   Prevent scrolling on the base window */
   background-color: #f9f9f9; /* Brighter background for day mode */
@@ -80,11 +81,12 @@ body.dark-mode .Options-content {
 }
 
 .App-shop, .App-leaderboard {
-  
+  /* 100% of the viewport height */
+  line-height: 0.5; 
   /* width: 20%; Set width to 20% */
   /* height: 100vh; Full height of the webpage */
   /* padding: 20px; Padding inside the container */
-  background-color: #e6e6e6; /* Light gray background for shop and leaderboard */
+  /* background-color: #e6e6e6; Light gray background for shop and leaderboard */
   /* border-radius: 10px; Rounded corners */
   /* display: flex; Use flexbox for layout */
   /* flex-direction: column; Arrange children in a column */
@@ -95,6 +97,8 @@ body.dark-mode .Options-content {
 }
 
 .App-main {
+   /* 100% of the viewport height */
+  line-height: 0.5; 
   /* flex-grow: 1; Allow the main section to grow */
   /* display: flex; Use flexbox for layout */
   /* flex-direction: column; Arrange children in a column */
