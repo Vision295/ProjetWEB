@@ -1,5 +1,8 @@
 .App {
-  text-align: center; /* Center align text within the App component */
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
 .App-logo {
@@ -15,6 +18,23 @@
 
 .Bitcoin-logo:active {
   transform: scale(0.95); /* Scale down the logo when active */
+}
+
+.Crypto-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.Crypto-logo {
+  height: 100px;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+.Crypto-logo:active {
+  transform: scale(0.95);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -65,14 +85,17 @@ body.dark-mode .Options-content {
 }
 
 .App-header {
-  background-color: #ffffff; /* Bright header background */
-  min-height: 100vh; /* Minimum height of 100% viewport height */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: row; /* Arrange children in a row */
-  align-items: flex-start; /* Align items to the start of the flex container */
-  justify-content: space-between; /* Distribute space between items */
-  font-size: calc(10px + 2vmin); /* Responsive font size */
-  color: #000000; /* Ensure text in header is dark in day mode */
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+}
+
+.App-sidebar {
+  width: 25%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 1px solid #ccc;
 }
 
 .App-shop, .App-leaderboard {
@@ -90,12 +113,19 @@ body.dark-mode .Options-content {
 }
 
 .App-main {
-  flex-grow: 1; /* Allow the main section to grow */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Arrange children in a column */
-  align-items: center; /* Center align items horizontally */
-  justify-content: center; /* Center align items vertically */
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   position: relative; /* Set relative positioning for child elements */
+}
+
+.balances {
+  margin-bottom: 20px;
+  text-align: left;
+  width: 100%;
 }
 
 .App-link {
@@ -103,22 +133,16 @@ body.dark-mode .Options-content {
 }
 
 .shop-item {
-  background-color: #f0f0f0; /* Light gray background for shop items */
-  padding: 5px; /* Reduce padding to fit content */
-  margin: 10px 0; /* Margin between items */
-  border-radius: 5px; /* Rounded corners */
-  text-align: center; /* Center align text */
-  width: 80%; /* Adjust the width to make the boxes smaller */
-  height: auto; /* Allow height to adjust based on content */
-  font-size: 0.8em; /* Reduce font size to fit content */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Arrange children in a column */
-  justify-content: center; /* Center align items vertically */
-  color: #000000; /* Ensure text is dark in day mode */
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: left;
 }
 
 .shop-item button {
-  margin-top: 5px; /* Margin above the button */
+  margin-top: 10px; /* Margin above the button */
   padding: 5px 10px; /* Padding inside the button */
   cursor: pointer; /* Change cursor to pointer on hover */
 }
@@ -201,4 +225,27 @@ body.dark-mode .Options-content {
     opacity: 0;
     transform: translateY(-20px);
   }
+}
+
+.App-market {
+  width: 25%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  overflow-y: auto;
+  border-left: 1px solid #ccc;
+}
+
+.market-item {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.market-item button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
 }
