@@ -239,25 +239,11 @@ function App() {
           <p>USD Balance: ${USD.toFixed(2)}</p>
           <p>BTC Balance: {BTC.toFixed(6)} BTC</p>
           <p>Bitcoins per second: {bps}</p>
-          <button onClick={handleSellBtc}>Sell BTC for USD</button>
+          <button className = "Sell-BTC-Button" onClick={handleSellBtc}>Sell BTC for USD</button>
           <div className="Bitcoin-container">
-            <img
-              src={bitcoin}
-              className="Bitcoin-logo"
-              alt="bitcoin"
-              onClick={handleMineBtc}
-            />
-            {clickAnimation && (
-              <span
-                className="Click-animation"
-                style={{
-                  top: `${animationPosition.top}px`,
-                  left: `${animationPosition.left}px`,
-                }}
-              >
-                +{clickValue}
-              </span>
-            )}
+            <button className="Bitcoin-button" onClick={handleMineBtc}>
+              Mine Bitcoin
+            </button>
           </div>
         </div>
         <div className="App-leaderboard">
@@ -267,27 +253,13 @@ function App() {
               <p>{crypto.name}</p>
               <p>Price: ${crypto.price.toFixed(2)}</p>
               <p>Quantity: {crypto.quantity}</p>
-              <button onClick={() => handleBuyCrypto(index)}>Buy</button>
-              <button onClick={() => handleSellCrypto(index)}>Sell</button>
+              <button className = "crypto-item-button" onClick={() => handleBuyCrypto(index)}>Buy</button>
+              <button className = "crypto-item-button" onClick={() => handleSellCrypto(index)}>Sell</button>
             </div>
           ))}
         </div>
       </header>
-      {isOptionsOpen && (
-        <div className="Options-modal">
-          <div className="Options-content">
-            <h2>Settings</h2>
-            <p>Adjust your preferences here:</p>
-            <label>
-              <input type="checkbox" /> Enable sound
-            </label>
-            <label>
-              <input type="checkbox" /> Dark mode
-            </label>
-            <button onClick={toggleOptions}>Close</button>
-          </div>
-        </div>
-      )}
+
     </div>
   );
 }
