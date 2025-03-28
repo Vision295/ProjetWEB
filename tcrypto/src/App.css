@@ -31,52 +31,18 @@ body {
   /* color: #000000; Dark text for better contrast in day mode */
 }
 
-body.dark-mode {
-  background-color: #ffffff; /* Dark background */
-  color: #000000; /* Light text for night mode */
-}
 
-body.dark-mode .App-header {
-  background-color: #ffffff; /* Darker header background */
-  color: #000000; /* Light text for header in night mode */
-}
 
-body.dark-mode .App-shop, 
-body.dark-mode .App-leaderboard {
-  background-color: #ffffff; /* Darker shop and leaderboard background */
-  color: #000000; /* Light text for shop and leaderboard in night mode */
-}
 
-body.dark-mode .shop-item {
-  background-color: #ffffff; /* Darker shop item background */
-  color: #000000; /* Light text for shop items in night mode */
-}
 
-body.dark-mode .DarkMode-button {
-  background-color: #ffffff; /* Darker button background */
-  color: #000000; /* Light text for button in night mode */
-}
 
-body.dark-mode .Options-modal {
-  background-color: rgba(0, 0, 0, 0, 0, 0); /* Darker modal background */
-}
 
-body.dark-mode .Options-content {
-  background-color: #ffffff; /* Darker modal content background */
-  color: #000000; /* Light text for modal content */
-}
 
-body.dark-mode .App-sidebar,
-body.dark-mode .App-market {
-  background-color: #000000; /* Softer dark sidebar and market background */
-  color: #ffffff; /* Light text */
-}
 
-body.dark-mode .shop-item,
-body.dark-mode .market-item {
-  background-color: #000000; /* Softer dark item background */
-  color: #ffffff; /* Light text */
-}
+
+
+
+
 
 .App-header {
   font-family: 'Pixelify Sans';
@@ -185,27 +151,8 @@ body.dark-mode .market-item {
   /* cursor: pointer; */
 /* } */
 
-.DarkMode-button {
-  position: absolute; /* Position button relative to its container */
-  top: 10px; /* 10px from the top */
-  right: 10px; /* 10px from the right */
-  font-family: 'Pixelify Sans';
-  /* position: absolute; */
-  /* top: 10px; */
-  /* left: 10px; */
-  /* padding: 10px 20px; */
-  /* background-color: #d9d9d9; Light gray button background */
-  color: #000000; /* Dark text for button */
-  /* border: none; */
-  /* border-radius: 5px; */
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
 
-body.dark-mode .DarkMode-button {
-  background-color: #444444; /* Softer dark button background */
-  color: #ffffff; /* Light text for button in night mode */
-}
+
 
 /* .Options-modal { */
   /* position: fixed; */
