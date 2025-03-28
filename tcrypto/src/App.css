@@ -1,5 +1,8 @@
 .App {
-  text-align: center; /* Center align text within the App component */
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
 .App-logo {
@@ -17,6 +20,23 @@
   transform: scale(0.95); /* Scale down the logo when active */
 }
 
+.Crypto-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.Crypto-logo {
+  height: 100px;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+.Crypto-logo:active {
+  transform: scale(0.95);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear; /* Spin animation for the logo */
@@ -30,12 +50,12 @@ body {
 }
 
 body.dark-mode {
-  background-color: #121212; /* Dark background */
-  color: #ffffff; /* Light text for night mode */
+  background-color: #1c1c1c; /* Slightly lighter dark background */
+  color: #e0e0e0; /* Softer light text */
 }
 
 body.dark-mode .App-header {
-  background-color: #1e1e1e; /* Darker header background */
+  background-color: #2a2a2a; /* Softer dark header background */
   color: #ffffff; /* Light text for header in night mode */
 }
 
@@ -46,12 +66,12 @@ body.dark-mode .App-leaderboard {
 }
 
 body.dark-mode .shop-item {
-  background-color: #3a3a3a; /* Darker shop item background */
+  background-color: #3d3d3d; /* Softer dark item background */
   color: #ffffff; /* Light text for shop items in night mode */
 }
 
 body.dark-mode .DarkMode-button {
-  background-color: #444444; /* Darker button background */
+  background-color: #444444; /* Softer dark button background */
   color: #ffffff; /* Light text for button in night mode */
 }
 
@@ -64,15 +84,30 @@ body.dark-mode .Options-content {
   color: #ffffff; /* Light text for modal content */
 }
 
+body.dark-mode .App-sidebar,
+body.dark-mode .App-market {
+  background-color: #333333; /* Softer dark sidebar and market background */
+  color: #ffffff; /* Light text */
+}
+
+body.dark-mode .shop-item,
+body.dark-mode .market-item {
+  background-color: #3d3d3d; /* Softer dark item background */
+  color: #ffffff; /* Light text */
+}
+
 .App-header {
-  background-color: #ffffff; /* Bright header background */
-  min-height: 100vh; /* Minimum height of 100% viewport height */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: row; /* Arrange children in a row */
-  align-items: flex-start; /* Align items to the start of the flex container */
-  justify-content: space-between; /* Distribute space between items */
-  font-size: calc(10px + 2vmin); /* Responsive font size */
-  color: #000000; /* Ensure text in header is dark in day mode */
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+}
+
+.App-sidebar {
+  width: 25%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 1px solid #ccc;
 }
 
 .App-shop, .App-leaderboard {
@@ -90,12 +125,19 @@ body.dark-mode .Options-content {
 }
 
 .App-main {
-  flex-grow: 1; /* Allow the main section to grow */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Arrange children in a column */
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
   align-items: center; /* Center align items horizontally */
-  justify-content: center; /* Center align items vertically */
+  justify-content: flex-start; /* Align items to the top */
   position: relative; /* Set relative positioning for child elements */
+}
+
+.balances {
+  margin-bottom: 20px;
+  text-align: left;
+  width: 100%;
 }
 
 .App-link {
@@ -103,22 +145,16 @@ body.dark-mode .Options-content {
 }
 
 .shop-item {
-  background-color: #f0f0f0; /* Light gray background for shop items */
-  padding: 5px; /* Reduce padding to fit content */
-  margin: 10px 0; /* Margin between items */
-  border-radius: 5px; /* Rounded corners */
-  text-align: center; /* Center align text */
-  width: 80%; /* Adjust the width to make the boxes smaller */
-  height: auto; /* Allow height to adjust based on content */
-  font-size: 0.8em; /* Reduce font size to fit content */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Arrange children in a column */
-  justify-content: center; /* Center align items vertically */
-  color: #000000; /* Ensure text is dark in day mode */
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: left;
 }
 
 .shop-item button {
-  margin-top: 5px; /* Margin above the button */
+  margin-top: 10px; /* Margin above the button */
   padding: 5px 10px; /* Padding inside the button */
   cursor: pointer; /* Change cursor to pointer on hover */
 }
@@ -145,15 +181,21 @@ body.dark-mode .Options-content {
 }
 
 .DarkMode-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  position: absolute; /* Position the button absolutely within the App-main section */
+  top: 10px; /* Distance from the top */
+  right: 10px; /* Distance from the right */
   padding: 10px 20px;
-  background-color: #d9d9d9; /* Light gray button background */
+  background-color: #f0f0f0; /* Light gray button background */
   color: #000000; /* Dark text for button */
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .DarkMode-button {
+  background-color: #444444; /* Softer dark button background */
+  color: #ffffff; /* Light text for button in night mode */
 }
 
 .Options-modal {
@@ -182,12 +224,14 @@ body.dark-mode .Options-content {
 }
 
 .Click-animation {
-  position: absolute;
+  position: fixed; /* Use fixed positioning to align with viewport */
   font-size: 1.5rem;
   font-weight: bold;
-  color: orange; /* Change color to orange */
-  animation: fadeUp 0.3s ease-out; /* Quicker animation */
+  color: orange; /* Orange color matching the logo */
+  animation: fadeUp 0.3s ease-out; /* Smooth animation */
   pointer-events: none; /* Prevent interaction with the animation */
+  transform: translate(-50%, -50%); /* Center animation at the calculated position */
+  z-index: 10; /* Ensure it appears above other elements */
 }
 
 @keyframes fadeUp {
@@ -199,4 +243,27 @@ body.dark-mode .Options-content {
     opacity: 0;
     transform: translateY(-20px);
   }
+}
+
+.App-market {
+  width: 25%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  overflow-y: auto;
+  border-left: 1px solid #ccc;
+}
+
+.market-item {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.market-item button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
 }
