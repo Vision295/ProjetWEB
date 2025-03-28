@@ -1,7 +1,6 @@
 
 
 .App {
-  
 
 }
 
@@ -27,60 +26,62 @@
 
 body {
 
-  font-family: 'Courier';
+  /* font-family: 'Courier'; */
   /* overflow: hidden;   Prevent scrolling on the base window */
-  background-color: #f9f9f9; /* Brighter background for day mode */
-  color: #000000; /* Dark text for better contrast in day mode */
+  background-color: #000000; /*Brighter background for day mode */
+  /* color: #000000; Dark text for better contrast in day mode */
 }
 
 body.dark-mode {
-  background-color: #121212; /* Dark background */
-  color: #ffffff; /* Light text for night mode */
+  background-color: #ffffff; /* Dark background */
+  color: #000000; /* Light text for night mode */
 }
 
 body.dark-mode .App-header {
-  background-color: #1e1e1e; /* Darker header background */
-  color: #ffffff; /* Light text for header in night mode */
+  background-color: #ffffff; /* Darker header background */
+  color: #000000; /* Light text for header in night mode */
 }
 
 body.dark-mode .App-shop, 
 body.dark-mode .App-leaderboard {
-  background-color: #2a2a2a; /* Darker shop and leaderboard background */
-  color: #ffffff; /* Light text for shop and leaderboard in night mode */
+  background-color: #ffffff; /* Darker shop and leaderboard background */
+  color: #000000; /* Light text for shop and leaderboard in night mode */
 }
 
 body.dark-mode .shop-item {
-  background-color: #3a3a3a; /* Darker shop item background */
-  color: #ffffff; /* Light text for shop items in night mode */
+  background-color: #ffffff; /* Darker shop item background */
+  color: #000000; /* Light text for shop items in night mode */
 }
 
 body.dark-mode .DarkMode-button {
-  background-color: #444444; /* Darker button background */
-  color: #ffffff; /* Light text for button in night mode */
+  background-color: #ffffff; /* Darker button background */
+  color: #000000; /* Light text for button in night mode */
 }
 
 body.dark-mode .Options-modal {
-  background-color: rgba(0, 0, 0, 0.8); /* Darker modal background */
+  background-color: rgba(0, 0, 0, 0); /* Darker modal background */
 }
 
 body.dark-mode .Options-content {
-  background-color: #1e1e1e; /* Darker modal content background */
-  color: #ffffff; /* Light text for modal content */
+  background-color: #ffffff; /* Darker modal content background */
+  color: #000000; /* Light text for modal content */
 }
 
 .App-header {
   font-family: 'Courier';
-  background-color: #ffffff; /* Bright header background */
+  background-color: #000000; /* Bright header background */
   /* min-height: 100vh; Minimum height of 100% viewport height */
   /* display: flex; Use flexbox for layout */
   /* flex-direction: row; Arrange children in a row */
   /* align-items: flex-start; Align items to the start of the flex container */
   /* justify-content: space-between; Distribute space between items */
   font-size: calc(10px + 1vmin); /* Responsive font size */
-  color: #000000; /* Ensure text in header is dark in day mode */
+  color: #069506;  /* Ensure text in header is dark in day mode */
 }
 
 .App-shop, .App-leaderboard {
+  color: #069506; 
+  font-size: 14px;
   /* 100% of the viewport height */
   line-height: 0.5; 
   /* width: 20%; Set width to 20% */
@@ -93,10 +94,23 @@ body.dark-mode .Options-content {
   /* align-items: center; Center align items horizontally */
   /* justify-content: flex-start; Align items to the top */
   /* overflow-y: auto; Make the section scrollable */
-  color: #000000; /* Ensure text is dark in day mode */
+ /* Ensure text is dark in day mode */
+}
+
+.App-leaderboard {
+  position: absolute; /* Position button relative to its container */
+  top: 10px; /* 10px from the top */
+  right: 250px; /* 10px from the right */
+}
+
+.App-shop{
+  position: absolute;
+  top:10px;
+  right:600px;
 }
 
 .App-main {
+  font-size: 14px;
    /* 100% of the viewport height */
   line-height: 0.5; 
   /* flex-grow: 1; Allow the main section to grow */
@@ -124,7 +138,7 @@ body.dark-mode .Options-content {
   /* display: flex; Use flexbox for layout */
   /* flex-direction: column; Arrange children in a column */
   /* justify-content: center; Center align items vertically */
-  color: #000000; /* Ensure text is dark in day mode */
+  color: #069506;  /* Ensure text is dark in day mode */
 }
 
 .shop-item button {
@@ -156,13 +170,16 @@ body.dark-mode .Options-content {
 /* } */
 
 .DarkMode-button {
+  position: absolute; /* Position button relative to its container */
+  top: 10px; /* 10px from the top */
+  right: 10px; /* 10px from the right */
   font-family: 'Courier';
   /* position: absolute; */
   /* top: 10px; */
   /* left: 10px; */
   /* padding: 10px 20px; */
   /* background-color: #d9d9d9; Light gray button background */
-  color: #000000; /* Dark text for button */
+  color: #069506; /* Dark text for button */
   /* border: none; */
   /* border-radius: 5px; */
   cursor: pointer;
@@ -222,4 +239,14 @@ body.dark-mode .Options-content {
 .Bitcoin-button{
   font-family: 'Courier';
   cursor:pointer;
+}
+
+.vertical-line{
+  position: absolute; /* Position button relative to its container */
+  top: 10px; /* 10px from the top */
+  right: 540px; /* 10px from the right */
+  font-size: 14px;
+  color: #069506;
+  /* 100% of the viewport height */
+ line-height: 0.5; 
 }

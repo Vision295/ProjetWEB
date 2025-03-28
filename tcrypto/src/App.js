@@ -247,6 +247,38 @@ function App() {
           ))}
         </div>
 
+        <div class="vertical-line">
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>  
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>  
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+          <pre>+</pre>
+
+
+        </div>    
+
         <div className="App-leaderboard">
           <h2>Cryptocurrencies</h2>
           {cryptos.map((crypto, index) => (
@@ -264,5 +296,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;
