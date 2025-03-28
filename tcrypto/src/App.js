@@ -218,6 +218,7 @@ function App() {
 
   return (
     <div className="App">
+    
       <header className="App-header">
         <div className="App-main">
           <button className="DarkMode-button" onClick={toggleDarkMode}>
@@ -248,34 +249,31 @@ function App() {
         </div>
 
         <div class="vertical-line">
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>  
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>  
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-          <pre>+</pre>
-
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>  
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>  
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
+        <p>+</p>
 
         </div>    
 

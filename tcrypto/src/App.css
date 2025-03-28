@@ -5,7 +5,7 @@
 }
 
 .crypto-item-button{
-  font-family: 'Courier';
+  font-family: 'Pixelify Sans';
 }
 
 .App-logo {
@@ -68,7 +68,7 @@ body.dark-mode .Options-content {
 }
 
 .App-header {
-  font-family: 'Courier';
+  font-family: 'Pixelify Sans';
   background-color: #000000; /* Bright header background */
   /* min-height: 100vh; Minimum height of 100% viewport height */
   /* display: flex; Use flexbox for layout */
@@ -142,7 +142,7 @@ body.dark-mode .Options-content {
 }
 
 .shop-item button {
-  font-family: 'Courier';
+  font-family: 'Pixelify Sans';
   /* margin-top: 5px; Margin above the button */
   /* padding: 5px 10px; Padding inside the button */
   cursor: pointer; /* Change cursor to pointer on hover */
@@ -173,13 +173,13 @@ body.dark-mode .Options-content {
   position: absolute; /* Position button relative to its container */
   top: 10px; /* 10px from the top */
   right: 10px; /* 10px from the right */
-  font-family: 'Courier';
+  font-family: 'Pixelify Sans';
   /* position: absolute; */
   /* top: 10px; */
   /* left: 10px; */
   /* padding: 10px 20px; */
   /* background-color: #d9d9d9; Light gray button background */
-  color: #069506; /* Dark text for button */
+  color: #000000; /* Dark text for button */
   /* border: none; */
   /* border-radius: 5px; */
   cursor: pointer;
@@ -232,14 +232,16 @@ body.dark-mode .Options-content {
 /* } */
 
 .Sell-BTC-Button{
-  font-family: 'Courier';
+  font-family: 'Pixelify Sans';
   cursor:pointer;
 }
 
 .Bitcoin-button{
-  font-family: 'Courier';
+  font-family: 'Pixelify Sans';
   cursor:pointer;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap");
 
 .vertical-line{
   position: absolute; /* Position button relative to its container */
@@ -247,6 +249,7 @@ body.dark-mode .Options-content {
   right: 540px; /* 10px from the right */
   font-size: 14px;
   color: #069506;
+  font-family: 'Pixelify Sans';
   /* 100% of the viewport height */
- line-height: 0.5; 
+  line-height: 0.5; 
 }
