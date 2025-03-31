@@ -273,14 +273,18 @@ function App() {
           <h2>Crypto Market</h2>
           {['BTC', 'ETH', 'BNB', 'TCR'].map(crypto => (
             availableCryptos.includes(crypto) && (
-              <div key={crypto} className="market-item">
-                <p>{crypto} Price: ${cryptoPrices[crypto].toFixed(2)}</p>
+              <div key={crypto} className={`market-item-${crypto}`}>
+                
+                  {crypto} Price: ${cryptoPrices[crypto].toFixed(2)}
+                
                 <p>{crypto} per second: {cps[crypto].toFixed(6)}</p>
                 <button onClick={() => handleSellCrypto(crypto)}>Sell All {crypto}</button>
               </div>
             )
           ))}
         </div>
+
+        
       </header>
     </div>
   );
