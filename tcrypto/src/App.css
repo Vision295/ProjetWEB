@@ -11,7 +11,10 @@ body {
 }
 
 
+.shop-item button {
+  font-family: 'Pixelify Sans';
 
+}
 
 
 
@@ -35,10 +38,6 @@ body {
 
 
 
-.market-item-BTC {
-  color: #2a0695;
-  font-size: 140px;
-}
 
 .App-market {
   color: #069506;
@@ -48,6 +47,7 @@ body {
 }
 
 .App-sidebar{
+  font-family: 'Pixelify Sans';
   position: absolute;
   top:10px;
   right:600px;
@@ -105,3 +105,22 @@ body {
   object-fit: contain; /* Ensures the entire image fits inside the box */
 }
 
+.usd-balance {
+  color: #069506;  /* Green for USD */
+}
+
+.btc-balance {
+  color: #2a0695;  /* Purple for BTC */
+}
+
+.eth-balance {
+  color: #4b6a9e;  /* Blue for ETH */
+}
+
+.bnb-balance {
+  color: #f3b63e;  /* Yellow for BNB */
+}
+
+.tcr-balance {
+  color: #ff6347;  /* Tomato red for TCR */
+}

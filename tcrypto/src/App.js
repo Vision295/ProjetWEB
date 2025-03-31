@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   // Set the balance states
-  const [USD, setUSD] = useState(10000);
+  const [USD, setUSD] = useState(10000000000000000000000000000000000000);
   const [BTC, setBTC] = useState(0);
   const [ETH, setETH] = useState(0);
   const [BNB, setBNB] = useState(0);
@@ -157,11 +157,11 @@ function App() {
 
           <h1>Crypto Market Simulator</h1>
           <div className="balances">
-            <p>USD Balance: ${USD.toFixed(2)}</p>
-            <p>BTC Balance: {BTC.toFixed(6)} BTC (per second: {cps.BTC.toFixed(6)})</p>
-            <p>ETH Balance: {ETH.toFixed(6)} ETH (per second: {cps.ETH.toFixed(6)})</p>
-            <p>BNB Balance: {BNB.toFixed(6)} BNB (per second: {cps.BNB.toFixed(6)})</p>
-            <p>TCR Balance: {TCR.toFixed(6)} TCR (per second: {cps.TCR.toFixed(6)})</p>
+            <p className="usd-balance">USD Balance: ${USD.toFixed(2)}</p>
+            <p className="btc-balance">BTC Balance: {BTC.toFixed(6)} BTC (per second: {cps.BTC.toFixed(6)})</p>
+            <p className="eth-balance">ETH Balance: {ETH.toFixed(6)} ETH (per second: {cps.ETH.toFixed(6)})</p>
+            <p className="bnb-balance">BNB Balance: {BNB.toFixed(6)} BNB (per second: {cps.BNB.toFixed(6)})</p>
+            <p className="tcr-balance">TCR Balance: {TCR.toFixed(6)} TCR (per second: {cps.TCR.toFixed(6)})</p>
           </div>
           <div className="Crypto-container">
             {availableCryptos.includes('Bitcoin') && (
@@ -273,7 +273,7 @@ function App() {
           <h2>Crypto Market</h2>
           {['BTC', 'ETH', 'BNB', 'TCR'].map(crypto => (
             availableCryptos.includes(crypto) && (
-              <div key={crypto} className={`market-item-${crypto}`}>
+              <div key={crypto} >
                 
                   {crypto} Price: ${cryptoPrices[crypto].toFixed(2)}
                 
