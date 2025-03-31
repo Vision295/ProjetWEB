@@ -5,6 +5,8 @@ import binance from './binance1.png';
 import tcrypto from './tcrypto1.png';
 import './App.css';
 
+const API_BASE_URL = 'http://localhost:5000'; // Revert back to localhost
+
 function App() {
   // Set the balance states
   const [USD, setUSD] = useState(10000);
@@ -151,7 +153,7 @@ function App() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/users');
+        const response = await fetch(`${API_BASE_URL}/api/users`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -165,7 +167,7 @@ function App() {
 
     const fetchCurrencyData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/currencies');
+        const response = await fetch(`${API_BASE_URL}/api/currencies`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -277,7 +279,6 @@ function App() {
         <p>+</p>
         <p>+</p>
         <p>+</p>  
-        <p>+</p>
         <p>+</p>
         <p>+</p>
         <p>+</p>
