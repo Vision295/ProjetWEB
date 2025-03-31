@@ -145,11 +145,46 @@ function App() {
     }
   };
 
-  
+  const [userData, setUserData] = useState([]); // State to store fetched user data
+  const [currencyData, setCurrencyData] = useState([]); // State to store fetched currency data
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/users');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("Fetched user data:", data);
+        setUserData(data);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
 
+    const fetchCurrencyData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/currencies');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("Fetched currency data:", data);
+        setCurrencyData(data);
+      } catch (error) {
+        console.error('Error fetching currency data:', error);
+      }
+    };
 
+    // Fetch data every 500ms
+    const interval = setInterval(() => {
+      fetchUserData();
+      fetchCurrencyData();
+    }, 500);
 
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
 
   return (
     <div className="App">
@@ -280,6 +315,57 @@ function App() {
               </div>
             )
           ))}
+        </div>
+
+        <div className="App-leaderboard">
+          <h2>Leaderboard</h2>
+          {userData.length > 0 ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userData.map((user, index) => (
+                  <tr key={index}>
+                    <td>{user.name}</td>
+                    <td>{user.score}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No data available.</p>
+          )}
+        </div>
+        <div className="App-currencies">
+          <h2>Currencies</h2>
+          {currencyData.length > 0 ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Currency</th>
+                  <th>Value</th>
+                  <th>Total</th>
+                  <th>Available</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currencyData.map((currency, index) => (
+                  <tr key={index}>
+                    <td>{currency.name}</td>
+                    <td>{currency.value}</td>
+                    <td>{currency.total}</td>
+                    <td>{currency.available}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No data available.</p>
+          )}
         </div>
       </header>
     </div>
